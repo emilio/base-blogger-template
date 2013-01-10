@@ -155,7 +155,7 @@
 		/*
 		-----------------------------------------------
 		Blogger Template Style
-		Name:     Plantilla básica para blogger
+		Name:     Lienzo - Plantilla básica para blogger
 		Designer: Emilio Cobos
 		URL:      emiliocobos.net
 		----------------------------------------------- */
@@ -190,6 +190,9 @@
 		 *       .widget .title      : El título de los widgets
 		 * .site-footer              : El footer del sitio
 		 *   .widget                 : Cada uno de los widgets del footer
+		 *
+		 *
+		 * Si te interesa un CSS básico, pásate por http://emiliocobos.net/lienzo-plantilla-basica-blogger/
 		 */
 	]]></b:skin>
 </head>
