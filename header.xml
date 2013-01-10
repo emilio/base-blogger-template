@@ -1,0 +1,28 @@
+<b:section class='header' id='header' maxwidgets='1' showaddelement='no'>
+	<b:widget id='Header1' locked='true' title='Serif - Plantilla HTML5 para blogger (cabecera)' type='Header'>
+		<b:includable id='main'>
+			<b:if cond='data:useImage'>
+				<a expr:href='data:blog.homepageUrl' title='Ir al inicio' rel='home'>
+					<h1 expr:style='&quot;color: transparent; font: 0/0 a; background-image: url(\&quot;&quot; + data:sourceUrl + &quot;\&quot;); &quot;                        + &quot;background-position: &quot;                        + data:backgroundPositionStyleStr + &quot;; &quot;                        + data:widthStyleStr                        + &quot;min-height: &quot; + data:height                        + &quot;_height: &quot; + data:height                        + &quot;background-repeat: no-repeat; &quot;'>
+						<data:title/>
+					</h1>
+					<b:include name='description'/>
+				</a>
+			<b:else/>
+				<h1 class='site-title'>
+					<b:include name='title'/>
+				</h1>
+				<b:include name='description'/>
+			</b:if>
+		</b:includable>
+
+		<b:includable id='title'>
+			<a rel='home' title='Ir al inicio' expr:href='data:blog.homepageUrl'><data:title/></a>
+		</b:includable>
+		<b:includable id='description'>
+			<p class='description'>
+				<data:description/>
+			</p>
+		</b:includable>
+	</b:widget>
+</b:section>

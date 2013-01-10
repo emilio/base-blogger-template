@@ -1,0 +1,9 @@
+<b:section class='footer' id='footer' showaddelement='yes'>
+	<b:widget id='HTML1' locked='false' title='' type='HTML'>
+		<b:includable id='main'>
+			<div class='widget-content'>
+				Plantilla con la tecnología de blogger. Creada por <a href='//emiliocobos.net' title='Diseño web, blogger, wordpress'>Emilio Cobos</a>
+			</div>
+		</b:includable>
+	</b:widget>
+</b:section>

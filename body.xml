@@ -1,0 +1,20 @@
+<!-- http://emiliocobos.net/truco-rapido-para-blogger-personalizar-la-plantilla-con-css-dependiendo-del-tipo-de-pagina/-->
+<body expr:class='data:blog.mobileClass + &quot; &quot; + data:blog.pageType' expr:data-blog-url='data:blog.canonicalUrl' expr:data-home='data:blog.url == data:blog.homepageUrl'>
+	<div class='site-wrapper'>
+		<header role='banner' class='site-header'>
+			<!-- #file=header.xml -->
+		</header><!-- .site-header -->
+		<div class="content-wrapper">
+			<div class='content' id='content' role='main'>
+				<b:section class='main' id='main' showaddelement='no'>
+					<!-- #file=blog.xml -->
+				</b:section>
+			</div>
+			<!-- #file=sidebar.xml -->
+		</div><!-- .content-wrapper -->
+		<footer class="site-footer">
+			<!-- #file=footer.xml -->
+		</footer><!-- .site-footer -->
+	</div><!-- .site-wrapper -->
+</body>
+</html>

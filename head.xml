@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE html>
+<html expr:dir='data:blog.languageDirection'
+	prefix='og: http://ogp.me/ns# article: http://ogp.me/ns/article#'
+	lang='es'
+	class='v2 no-js'>
+<head>
+	<meta charset='utf-8' />
+	<!-- http://emiliocobos.net/seo-blogger-head/-->
+	<!-- script redirección: http://emiliocobos.net/evitar-la-redireccion-nueva-de-blogger/ -->
+	<script type='text/javascript'>
+		//<![CDATA[
+		(function(){
+			var URL = document.URL,
+				reg = /\.blogspot\.(com\...|..)\//
+			if( URL.match( reg ) ){
+				window.location = URL.replace( reg, ".blogspot.com\/ncr\/" )
+			}
+		})()
+		// Fallback CSS para cuando no hay javascript
+		document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+		//]]>
+	</script>
+
+	<!--
+		Comentarios condicionales IE -> Permite usar CSS condicionalmente
+		La mejor forma de usarlos sería en el <html>, pero no se puede sin tranformar en entidades
+	-->
+	<!--[if IE 8]>
+		<script type='text/javascript'>document.documentElement.className += ' ie8 lt-ie9'</script>
+	<![endif]-->
+	<!--[if IE 7]>
+		<script type='text/javascript'>document.documentElement.className += ' ie7 lt-ie8 lt-ie9'</script>
+	<![endif]-->
+	<!--[if lt IE 7]>
+		<script type='text/javascript'>document.documentElement.className += ' ie6 lt-ie7 lt-ie8 lt-ie9'</script>
+	<![endif]-->
+
+
+	<!--Meta X-UA-Compatible -> Mejor experiencia para IE -->
+	<!-- <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'/> -->
+	
+	<!-- meta viewport -> dispositivos móviles -->
+	<meta content='width=device-width,initial-scale=1.0,maximum-scale=1.0' name='viewport'/>
+
+	<!-- Metas para facebook (name=description la incluye all-head-content) -->
+	<!-- <meta property='og:title'> la incluimos donde el título, por conveniencia -->
+	<meta property='og:site_name' expr:content='data:blog.title'/>
+	<meta property='og:type' content='blog'/>
+	<meta expr:content='data:blog.canonicalUrl' property='og:url'/>
+	<b:if cond='data:blog.metaDescription'>
+		<meta property='og:description' expr:content='data:blog.metaDescription'/>
+	<b:else />
+		<b:if cond='data:blog.url == data:blog.homepageUrl'>
+			<!-- Metas home -->
+			<meta property='og:description' content='[DESCRIPCION_GENERAL_DEL_BLOG]'/>
+		<b:else />
+			<!--
+				all-head-content incluye la meta description si existe data:blog.metaDescription
+				En el home siempre la hay, pero en este caso concreto no
+			-->
+			<meta name='description' property='og:description' expr:content='data:blog.pageName + ": " + data:blog.title'/>
+		</b:if>
+	</b:if>
+
+	<!-- Imagen del post -->
+	<b:if cond='data:blog.postImageThumbnailUrl'>
+		<meta property='og:image' expr:content='data:blog.postImageThumbnailUrl' />
+	</b:if>
+
+	<!-- Indexación -->
+	<b:if cond='data:blog.pageType == "archive"'>
+		<!-- No queremos indexar en los archivos -->
+		<meta content='noindex,nofollow' name='robots'/>
+	<b:else />
+		<b:if cond='data:blog.pageType == "index"'>
+			<b:if cond='data:blog.homepageUrl == data:blog.url'>
+				<!-- En el home sí -->
+				<meta content='index,follow' name='robots'/>
+			<b:else/>
+				<!--  Pero en el resto de las index no -->
+				<meta content='noindex,nofollow' name='robots'/>
+			</b:if>
+		<b:else />
+			<!-- En el resto (páginas y posts) sí -->
+			<meta content='index,follow' name='robots'/>
+		</b:if>
+	</b:if>
+
+	<!-- Título -->
+	<b:if cond='data:blog.url != data:blog.homepageUrl'>
+		<meta property='og:title' expr:content='data:blog.pageName + " | " + data:blog.title'/>
+		<title><data:blog.pageName/> | <data:blog.title/></title>
+	<b:else/>
+		<meta property='og:title' expr:content='data:blog.pageTitle'/>
+		<title><data:blog.pageTitle/></title>
+	</b:if>
+
+	<!--
+		all-head-content. Incluye:
+			=> link[rel=me]
+			=> link[rel=publisher]
+			=> link[rel=canonical]
+			=> link[rel=image_src] si hay una imagen en la entrada
+			=> meta[name=description] si existe data:blog.metaDescription
+			=> meta[http-equiv=content-type]
+			=> links del feed
+			=> scripts para compatibilidad con HMTL5
+	-->
+	<!-- 
+		<b:include data='blog' name='all-head-content'/>
+	-->
+	<!-- Meta content-type está obsoleta, usaremos charset -->
+	<meta name='generator' content='blogger' />
+
+	<!-- Link al favicon (es el personalizado) -->
+	<b:if cond='data:blog.blogspotFaviconUrl'>
+		<link expr:href='data:blog.blogspotFaviconUrl' rel='icon' type='image/x-icon'/>
+	</b:if>
+
+	<!-- Link rel=canonical -->
+	<link rel='canonical' expr:href='data:blog.canonicalUrl' />
+
+	<!-- La descripción -->
+	<b:if cond='data:blog.metaDescription'>
+		<meta expr:content='data:blog.metaDescription' name='description' />
+	</b:if>
+
+	<!-- La imagen del post -->
+	<b:if cond='data:blog.postImageThumbnailUrl'>
+		<link rel='image_src' expr:href='data:blog.postImageThumbnailUrl' />
+	</b:if>
+
+
+	<!-- Link rel=me si existe -->
+	<b:if cond='data:blog.meTag'>
+		<data:blog.meTag />
+	</b:if>
+
+	<!-- Links del feed -->
+	<b:if cond='data:blog.feedLinks'>
+		<data:blog.feedLinks />
+	</b:if>
+
+	<!-- Compatibilidad con HTML5 sí, pero no para IE9, que es un buen navegador -->
+	<!--[if lt IE 9]>
+		<script src='http://html5shiv.googlecode.com/svn/trunk/html5.js'></script>
+	<![endif]-->
+	<!-- /all-head-content -->
+	
+	<!-- http://emiliocobos.net/eliminar-los-estilos-y-scripts-por-defecto-de-blogger/ -->
+	&lt;style id='page-skin-1'&gt;/*
+	<b:skin><![CDATA[*/
+		/*
+		-----------------------------------------------
+		Blogger Template Style
+		Name:     Plantilla básica para blogger
+		Designer: Emilio Cobos
+		URL:      emiliocobos.net
+		----------------------------------------------- */
+		/*
+		 * Aquí puedes añadir tu CSS, o bien justo debajo de </b:skin> en una hoja de estilos externa.
+		 * Te recomiendo que una de tus primeras reglas sea:
+		 * .item-control {
+		 *    display: none;
+		 * }
+		 * Para ocultar los iconos de edición rápida.
+		 * Algunos elementos clave para definir el estilo del sitio:
+		 * .site-wrapper             : Un contenedor general del sitio
+		 * .site-header              : La parte externa de la cabecera
+		 *   .site-title             : El logo
+		 *     .site-title a         : El link interno del logo
+		 * .content-wrapper          : El contenido general (lo que no es ni header ni footer)
+		 *   .content                : Columna central
+		 *     .post-outer           : La parte externa de los posts
+		 *       .post-title         : El título de los posts
+		 *         .post-title a     : El link del título
+		 *       .post-header        : Contenedor de los links de la cabecera de los posts
+		 *         .post-author      : El nombre del autor
+		 *         .post-published   : La fecha de publicación del post
+		 *         .post-tags        : Las etiquetas del post
+		 *       .post-body          : El texto del post
+		 *       .post-footer        : La parte de abajo del post
+		 *     .post-numero-0        : Primer post de todos
+		 *     .post-numero-1        : Segundo post de todos
+		 *     // así sucesivamente
+		 *   .sidebar                : Columna lateral (la sidebar de toda la vida)
+		 *     .widget               : Cada uno de los widgets
+		 *       .widget .title      : El título de los widgets
+		 * .site-footer              : El footer del sitio
+		 *   .widget                 : Cada uno de los widgets del footer
+		 */
+	]]></b:skin>
+</head>

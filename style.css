@@ -1,0 +1,103 @@
+body {
+	min-height: 100%;
+	margin: 1em 0;
+	background: #eee;
+	color: #333;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+	opacity: .9;
+	color: #32A1CC;
+	text-decoration: none;
+}
+
+a:hover {
+	opacity: 1;
+	border-bottom: 1px dashed;
+}
+
+.site-wrapper {
+	/* Estático, es un ejemplo */
+	width: 960px;
+	margin: 0 auto;
+	background: #fff;
+	box-shadow: 0 0 5px rgba(0,0,0,.5);
+
+}
+/* Clearfix */
+.content-wrapper:before,
+.content-wrapper:after {
+	content: "";
+	display: table;
+} 
+.content-wrapper:after {
+	clear: both;
+}
+.content-wrapper {
+	zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+
+/* Distribución entre la columna central y la lateral*/
+.sidebar,
+.content {
+	float: left;
+}
+
+
+.content {
+	width: 600px;
+	margin-right: 60px;
+}
+
+.sidebar {
+	width: 300px;
+}
+
+.site-footer {
+	clear: both;
+}
+
+/* El título */
+.site-title {
+	text-align: center;
+	line-height: 2;
+	margin: 0;
+}
+.description {
+	display: none;
+}
+.site-header {
+	border-bottom: 1px dashed #aaa;
+	margin-bottom: 1em;
+}
+
+/* Algunos detallitos para el post */
+.post-outer {
+	padding: 0 1em;
+}
+
+/* Y para los títulos de la sidebar y el footer */
+.widget .title {
+	color: #666;
+}
+.sidebar .title {
+	border-left: 3px solid #aaa;
+	padding-left: 8px;
+}
+
+
+.site-footer {
+	margin-top: 1.5em;
+}
+.site-footer .title {
+	border-top: 3px solid #aaa;
+	padding-top: 8px;
+}
+
+.site-footer .title,
+.site-footer .widget {
+	text-align: center;
+}
+

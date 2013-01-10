@@ -1,0 +1,120 @@
+<b:includable id='post' var='post'>
+	<div class='post hentry' expr:id='data:post.id' itemscope='itemscope' itemtype='http://schema.org/BlogPosting'>
+		<b:if cond='data:post.title'>
+			<b:if cond='data:blog.pageType == "index"'>
+				<h2 class='post-title entry-title' itemprop='name'>
+					<b:if cond='data:post.link'>
+						<a expr:href='data:post.link'><data:post.title/></a>
+					<b:else/>
+						<b:if cond='data:post.url'>
+							<a expr:href='data:post.url'><data:post.title/></a>
+						<b:else/>
+							<data:post.title/>
+						</b:if>
+					</b:if>
+				</h2>
+			<b:else />
+				<b:if cond='data:blog.pageType == "archive"'>
+					<h2 class='post-title entry-title' itemprop='name'>
+						<b:if cond='data:post.link'>
+							<a expr:href='data:post.link'><data:post.title/></a>
+						<b:else/>
+							<b:if cond='data:post.url'>
+								<a expr:href='data:post.url'><data:post.title/></a>
+							<b:else/>
+								<data:post.title/>
+							</b:if>
+						</b:if>
+					</h2>
+				<b:else />
+					<h1 class='post-title entry-title' itemprop='name'>
+						<b:if cond='data:post.link'>
+							<a rel="bookmark" expr:href='data:post.link'><data:post.title/></a>
+						<b:else/>
+							<b:if cond='data:post.url'>
+								<a rel="bookmark" expr:href='data:post.url'><data:post.title/></a>
+							<b:else/>
+								<data:post.title/>
+							</b:if>
+						</b:if>
+					</h1>
+				</b:if>
+			</b:if>
+		</b:if>
+
+		<header class='post-header'>
+			<span itemprop='author' itemscope='itemscope' itemtype='http://schema.org/Person' class='author vcard post-author'>
+				<b:if cond='data:post.authorProfileUrl'>
+					<a expr:href='data:post.authorProfileUrl' rel='author' class='url fn' itemprop='name url' expr:title='"Ver el perfil de " + data:post.author'>
+						<data:post.author/>
+					</a>
+				<b:else/>
+					<span itemprop='name' class='fn'><data:post.author/></span>
+				</b:if>
+			</span>
+
+			<time class='post-published published updated' itemprop='datePublished' expr:datetime='data:post.timestampISO8601'>
+				<data:post.timestamp />
+			</time>
+			
+			<b:if cond='data:post.labels'>
+				<span class='post-tags'>
+					<b:loop values='data:post.labels' var='label'>
+						<a expr:href='data:label.url' itemprop='keywords' rel='tag'><data:label.name/></a><b:if cond='data:label.isLast != &quot;true&quot;'>,</b:if>
+					</b:loop>
+				</span>
+			</b:if>
+
+			<b:if cond='data:blog.pageType != &quot;item&quot;'>
+				<b:if cond='data:blog.pageType != &quot;static_page&quot;'>
+					<b:if cond='data:post.allowComments'>
+						<span class='post-comment-link'>
+							<b:include data='post' name='comment_count_picker'/>
+						</span>
+					</b:if>
+				</b:if>
+			</b:if>
+		</header><!-- .post-header -->
+
+		<div class='post-body entry-content' expr:id='&quot;post-body-&quot; + data:post.id' itemprop='articleBody'>
+			<!--
+				http://www.oloblogger.com/2011/03/sumarios-automaticos-sin-javascript.html
+				(ligeramente modificado)				
+			-->
+			<b:if cond='data:blog.pageType == &quot;item&quot;'>
+				<data:post.body/>
+			<b:else/>
+				<b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+					<data:post.body/>
+				<b:else/>
+					<b:if cond='data:post.hasJumpLink'>
+						<data:post.body/>
+					<b:else/>
+						<b:if cond='data:post.snippet'>
+							<b:if cond='data:post.thumbnailUrl'>
+								<div class='post-thumb'>
+									<img expr:src='data:post.thumbnailUrl' expr:alt='data:post.title'/>
+								</div>
+							</b:if>
+							<data:post.snippet/>
+							<div class='jump-link'>
+								<a rel="bookmark" expr:href='data:post.url + &quot;#more&quot;' expr:title='data:post.title'><data:post.jumpText/></a>
+							</div>
+						<b:else/>
+							<data:post.body/>
+						</b:if>
+					</b:if>
+				</b:if>
+			</b:if>
+		</div>
+
+		<b:if cond='data:post.hasJumpLink'>
+			<div class='jump-link'>
+				<a expr:href='data:post.url + &quot;#more&quot;' expr:title='data:post.title'><data:post.jumpText/></a>
+			</div>
+		</b:if>
+
+		<footer class='post-footer'>
+		</footer><!-- .post-footer -->
+	</div><!-- /.post -->
+</b:includable>
