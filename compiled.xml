@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+
 <!DOCTYPE html>
 <html expr:dir='data:blog.languageDirection'
 	prefix='og: http://ogp.me/ns# article: http://ogp.me/ns/article#'
@@ -6,7 +7,7 @@
 	class='v2 no-js'>
 <head>
 	<meta charset='utf-8' />
-	<!-- http://emiliocobos.net/seo-blogger-head/-->
+	<!-- http://emiliocobos.net/seo-blogger-head/ -->
 	<!-- script redirección: http://emiliocobos.net/evitar-la-redireccion-nueva-de-blogger/ -->
 	<script type='text/javascript'>
 		//<![CDATA[
@@ -154,7 +155,7 @@
 		/*
 		-----------------------------------------------
 		Blogger Template Style
-		Name:     Plantilla básica para blogger
+		Name:     Lienzo - Plantilla básica para blogger
 		Designer: Emilio Cobos
 		URL:      emiliocobos.net
 		----------------------------------------------- */
@@ -189,6 +190,9 @@
 		 *       .widget .title      : El título de los widgets
 		 * .site-footer              : El footer del sitio
 		 *   .widget                 : Cada uno de los widgets del footer
+		 *
+		 *
+		 * Si te interesa un CSS básico, pásate por http://emiliocobos.net/lienzo-plantilla-basica-blogger/
 		 */
 	]]></b:skin>
 </head><!-- http://emiliocobos.net/truco-rapido-para-blogger-personalizar-la-plantilla-con-css-dependiendo-del-tipo-de-pagina/-->
@@ -920,7 +924,6 @@
 				</b:section>
 			</div>
 			<b:section class='sidebar' id='sidebar' showaddelement='yes'>
-
 </b:section>
 		</div><!-- .content-wrapper -->
 		<footer class="site-footer">
